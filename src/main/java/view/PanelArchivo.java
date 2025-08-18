@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import com.formdev.flatlaf.FlatDarculaLaf;
 
 public class PanelArchivo extends JInternalFrame {
 
@@ -10,6 +11,10 @@ public class PanelArchivo extends JInternalFrame {
 
     public PanelArchivo() {
         super("Archivo", true, true, true, true);
+        inicializar();
+    }
+
+    private void inicializar() {
         setSize(800, 600);
 
         fondo = new JLabel(new ImageIcon(getClass().getResource("/imagenes/FondoLexer2.png")));
@@ -17,6 +22,7 @@ public class PanelArchivo extends JInternalFrame {
         add(fondo);
 
         btnArchivo = new JButton("Seleccionar archivo");
+        btnArchivo.setActionCommand("SELECCIONAR_ARCHIVO");
         btnArchivo.putClientProperty("JButton.arc", 40);
 
         btnArchivo.setBackground(new Color(255, 140, 0));
@@ -24,7 +30,6 @@ public class PanelArchivo extends JInternalFrame {
         btnArchivo.setFont(new Font("Arial", Font.BOLD, 16));
         btnArchivo.setFocusPainted(false);
         btnArchivo.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-
         btnArchivo.setContentAreaFilled(false);
         btnArchivo.setOpaque(true);
 
