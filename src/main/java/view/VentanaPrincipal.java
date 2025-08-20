@@ -12,6 +12,7 @@ public class VentanaPrincipal extends JFrame {
     private PanelVistaArchivo panelVistaArchivo;
     private JMenuItem cargar;
     private JMenuItem nuevo;
+    private JMenuItem Garchivo;
 
     public VentanaPrincipal(){
         panelArchivo = new PanelArchivo();
@@ -28,6 +29,9 @@ public class VentanaPrincipal extends JFrame {
         desktopPane = new JDesktopPane();
         setContentPane(desktopPane);
 
+        desktopPane = new DesktopConFondo("/imagenes/gestion producto.png");
+        setContentPane(desktopPane);
+
         JMenu abrir = new JMenu("Archivo");
         nuevo = new JMenuItem("Nuevo");
         nuevo.setActionCommand("NUEVO");
@@ -38,6 +42,10 @@ public class VentanaPrincipal extends JFrame {
         abrir.add(cargar);
 
         JMenu  guardar = new JMenu("Guardar");
+        Garchivo = new JMenuItem("Guardar Archivo");
+        Garchivo.setActionCommand("CrearArchivo");
+        guardar.add(Garchivo);
+
         JMenuBar menubar = new JMenuBar();
 
         menubar.add(abrir);
@@ -48,26 +56,8 @@ public class VentanaPrincipal extends JFrame {
         getDesktopPane().add(panelEditor);
 
         getPanelEditor().setVisible(false);
+}
 
-    }
-    public void mostrarContenidoArchivo(String nombreArchivo, String contenido) {
-        panelVistaArchivo = new PanelVistaArchivo(nombreArchivo, contenido);
-        desktopPane.add(panelVistaArchivo);
-        panelVistaArchivo.setLocation(30, 30);
-        panelVistaArchivo.setVisible(true);
-    }
-
-    public void agregarDocumento(JInternalFrame panelNuevo){
-        desktopPane.add(panelNuevo);
-        panelNuevo.setLocation(30, 30);
-        panelNuevo.setVisible(true);
-        try {
-            panelNuevo.setSelected(true);
-            panelNuevo.toFront();
-        } catch (java.beans.PropertyVetoException e) {
-            e.printStackTrace();
-        }
-    }
 
     public PanelArchivo getPanelArchivo() {
         return panelArchivo;
@@ -113,4 +103,15 @@ public class VentanaPrincipal extends JFrame {
         this.nuevo = nuevo;
     }
 
+    public void setPanelEditor(PanelEditor panelEditor) {
+        this.panelEditor = panelEditor;
+    }
+
+    public JMenuItem getGarchivo() {
+        return Garchivo;
+    }
+
+    public void setGarchivo(JMenuItem garchivo) {
+        Garchivo = garchivo;
+    }
 }

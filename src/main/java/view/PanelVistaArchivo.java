@@ -10,13 +10,14 @@ public class PanelVistaArchivo extends JInternalFrame {
     public PanelVistaArchivo(String nombreArchivo, String contenido) {
         super("Contenido: " + nombreArchivo, true, true, true, true);
         inicializar(contenido);
+
     }
 
     private void inicializar(String contenido) {
         setSize(600, 400);
         setLayout(new BorderLayout());
         setBackground(new Color(245, 247, 249)); // Fondo claro general
-
+        setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
         // Panel superior con degradado más vibrante y borde sutil
         JPanel panelSuperior = new JPanel() {
             @Override
