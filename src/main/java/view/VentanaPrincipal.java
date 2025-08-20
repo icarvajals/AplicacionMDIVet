@@ -8,18 +8,14 @@ public class VentanaPrincipal extends JFrame {
 
     private JDesktopPane desktopPane;
     private PanelArchivo panelArchivo;
-    private PanelResultados panelResultados;
+    private PanelEditor panelEditor;
     private PanelVistaArchivo panelVistaArchivo;
     private JMenuItem cargar;
     private JMenuItem nuevo;
-    private JMenuItem analizador;
-    private JMenuItem editarDocumento;
-
-
 
     public VentanaPrincipal(){
         panelArchivo = new PanelArchivo();
-        panelResultados = new PanelResultados();
+        panelEditor = new PanelEditor("Editor", "Archivo1");
         inicializar();
     }
 
@@ -41,35 +37,18 @@ public class VentanaPrincipal extends JFrame {
         abrir.add(nuevo);
         abrir.add(cargar);
 
-
         JMenu  guardar = new JMenu("Guardar");
-        JMenu  editar = new JMenu("Editar");
-        editarDocumento = new JMenuItem("Editar Documento");
-        editarDocumento.setActionCommand("EDITAR");
-        editar.add(editarDocumento);
-        JMenu crear = new JMenu("Crear");
-
-
-        JMenu lexer = new JMenu("Lexer");
-        analizador = new JMenuItem("Analizador léxico");
-        analizador.setActionCommand("ANALIZADOR_LÉXICO");
-        lexer.add(analizador);
-
-
-
         JMenuBar menubar = new JMenuBar();
 
         menubar.add(abrir);
         menubar.add(guardar);
-        menubar.add(editar);
-        menubar.add(crear);
-        menubar.add(lexer);
         setJMenuBar(menubar);
 
         getDesktopPane().add(panelArchivo);
-        getDesktopPane().add(panelResultados);
+        getDesktopPane().add(panelEditor);
 
-        panelResultados.setVisible(false);
+        getPanelEditor().setVisible(false);
+
     }
     public void mostrarContenidoArchivo(String nombreArchivo, String contenido) {
         panelVistaArchivo = new PanelVistaArchivo(nombreArchivo, contenido);
@@ -89,8 +68,6 @@ public class VentanaPrincipal extends JFrame {
             e.printStackTrace();
         }
     }
-
-
 
     public PanelArchivo getPanelArchivo() {
         return panelArchivo;
@@ -112,13 +89,6 @@ public class VentanaPrincipal extends JFrame {
         return cargar;
     }
 
-    public PanelResultados getPanelResultados() {
-        return panelResultados;
-    }
-
-    public void setPanelResultados(PanelResultados panelResultados) {
-        this.panelResultados = panelResultados;
-    }
     public PanelVistaArchivo getPanelVistaArchivo() {
         return panelVistaArchivo;
     }
@@ -127,16 +97,12 @@ public class VentanaPrincipal extends JFrame {
         this.panelVistaArchivo = panelVistaArchivo;
     }
 
+    public PanelEditor getPanelEditor() {
+        return panelEditor;
+    }
+
     public void setCargar(JMenuItem cargar) {
         this.cargar = cargar;
-    }
-
-    public JMenuItem getAnalizador() {
-        return analizador;
-    }
-
-    public void setAnalizador(JMenuItem analizador) {
-        this.analizador = analizador;
     }
 
     public JMenuItem getNuevo() {
@@ -147,11 +113,4 @@ public class VentanaPrincipal extends JFrame {
         this.nuevo = nuevo;
     }
 
-    public JMenuItem getEditarDocumento() {
-        return editarDocumento;
-    }
-
-    public void setEditarDocumento(JMenuItem editarDocumento) {
-        this.editarDocumento = editarDocumento;
-    }
 }

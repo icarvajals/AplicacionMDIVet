@@ -20,20 +20,24 @@ public class Tokenizer {
     }
 
     public void tokenize(String str) {
-        String s = str.trim();
-        int totalLength = s.length();
+        String s = str;
+        int index = 0;
         tokens.clear();
-        while (!s.equals("")) {
-            System.out.println(s);
-            int remaining = s.length();
+
+        while (!s.isEmpty()) {
             boolean match = false;
             for (TokenInfo info : tokenInfos) {
                 Matcher m = info.regex.matcher(s);
                 if (m.find()) {
                     match = true;
-                    String tok = m.group().trim();
-                    s = m.replaceFirst("").trim();
-                    tokens.add(new Token(info.token, tok, totalLength - remaining));
+                    String tok = m.group();
+
+                    if (info.token != Token.ESPACIO) { // ignoramos espacios
+                        tokens.add(new Token(info.token, tok, index));
+                    }
+
+                    index += tok.length();
+                    s = s.substring(tok.length());
                     break;
                 }
             }
@@ -42,6 +46,9 @@ public class Tokenizer {
             }
         }
     }
+
+
+
 
     public LinkedList<Token> getTokens() {
         return tokens;

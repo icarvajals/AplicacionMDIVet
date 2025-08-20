@@ -28,7 +28,7 @@ public class PanelArchivo extends JInternalFrame {
         panelSuperior.setPreferredSize(new Dimension(800, 120));
         panelSuperior.setLayout(new BoxLayout(panelSuperior, BoxLayout.Y_AXIS));
 
-        JLabel lblTitulo = new JLabel("ANALIZADOR LÉXICO");
+        JLabel lblTitulo = new JLabel("COMPILADOr VETERINARIA");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 28));
         lblTitulo.setForeground(Color.WHITE);
         lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -71,7 +71,6 @@ public class PanelArchivo extends JInternalFrame {
         gbc.gridy = 1;
         panelCentral.add(btnArchivo, gbc);
 
-
         JLabel lblFormatos = new JLabel("Formatos permitidos: .txt");
         lblFormatos.setFont(new Font("Arial", Font.PLAIN, 14));
         lblFormatos.setForeground(Color.DARK_GRAY);
@@ -79,11 +78,8 @@ public class PanelArchivo extends JInternalFrame {
         gbc.insets = new Insets(10, 0, 0, 0);
         panelCentral.add(lblFormatos, gbc);
 
-
         add(panelSuperior, BorderLayout.NORTH);
         add(panelCentral, BorderLayout.CENTER);
-
-        setVisible(true);
     }
 
     public JButton getBtnArchivo() {
